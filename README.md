@@ -2,6 +2,8 @@ This is an ML project built entirely using Python. The project tries to unravel 
 
 Myers-Briggs Type Indicator (MBTI) is a widely used tool for categorizing individuals into 16 distinct personality types. The project uses machine learning models to classify Twitter users based on their MBTI personality types. 
 
+The dataset used here is https://www.kaggle.com/datasets/datasnaek/mbti-type?datasetId=2637.
+
 The project used a single (BERT) model multiclass approach and a multimodel binary classification strategy, where we used four distinct machine learning models to predict binary personality traits based on the MBTI dichotomies: Introversion/Extroversion, Intuition/Sensing, Thinking/Feeling, and Judging/Perceiving. In the first approach, a BERT model categorizes tweets into one of the 16 MBTI personality types. The second approach breaks down the personality
 classification task into four separate models, each specializing in one dichotomy. We used an ensemble of both these approaches to predict the final MBTI output. 
 
@@ -18,9 +20,9 @@ Dataset
 The dataset consists of two columns:
 
     type: The MBTI personality type of the user (e.g., INFJ, INTJ).
-    posts: The last 50 tweets posted by the user, separated by "|||".
+    posts: The last 50 tweets posted by the user
 
-Steps Undertaken
+Steps followed:
 
     Data Loading and Cleaning
         Loaded the dataset using pandas.
@@ -39,15 +41,8 @@ Steps Undertaken
             BERT layer to extract contextual embeddings.
             Dense layer with softmax activation for classification into 16 MBTI personality types.
 
-    Model Training
+    Model Training & Evaluation
         Encoded the MBTI personality types into one-hot labels.
         Trained the model using the training data and validated it using the validation data.
         Implemented early stopping to prevent overfitting.
-
-    Model Saving
-        Saved the trained model weights using TensorFlow's save_weights method.
-
-    Model Loading and Evaluation
-        Recreated the model architecture.
-        Loaded the saved weights into the new model instance.
         Evaluated the model's performance on the test set to ensure its effectiveness.
